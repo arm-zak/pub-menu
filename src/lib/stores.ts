@@ -17,5 +17,6 @@ export const coordinates = writable<Array<coordinate>>([]);
 export const askLocationButtonVisible = writable(false);
 export const alcoholPricesVisible = writable(false);
 export const itemDialogVisible = writable(false);
+export const itemDialogVisible2 = writable(false);
 export const itemDialogItem = writable<Item>({})
 export const itemDialogCategory = writable<Category>({shownAttributes:[]})
