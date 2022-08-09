@@ -14,7 +14,9 @@
 	import { checkGeolocationPermissions } from '../lib/util/geolocation';
 	import { sortDescending } from '../lib/util/sortDescending';
 	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
-	import ItemInfo from "../lib/dialogs/ItemInfo.svelte";
+	import {itemDialogVisible} from "../lib/stores.js";
+	import ItemInfo from '../lib/dialogs/ItemInfo.svelte';
+
 
 	export let websiteResponse : Website;
 	export let categoriesResponse: Array<Category>;
@@ -31,6 +33,7 @@
 		coordinates.set(locationBoundary)
 		checkGeolocationPermissions()
 	});
+
 </script>
 
 <svelte:head>
@@ -43,8 +46,14 @@
 	<GoogleAnalytics properties={[ googleAnalyticsId ]} />
 {/if}
 
+
+
 <Header />
 <Navigation />
 <List />
 <Footer />
-<ItemInfo />
+<!--<ItemInfo />-->
+{#if $itemDialogVisible}
+	<ItemInfo on:close="{() => {itemDialogVisible.set(false)}}">
+	</ItemInfo>
+{/if}
