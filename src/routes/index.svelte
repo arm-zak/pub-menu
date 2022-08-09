@@ -13,12 +13,14 @@
 	import type { Category } from '../lib/interfaces/Category';
 	import { checkGeolocationPermissions } from '../lib/util/geolocation';
 	import { sortDescending } from '../lib/util/sortDescending';
+	import { GoogleAnalytics } from '@beyonk/svelte-google-analytics'
 	import ItemInfo from "../lib/dialogs/ItemInfo.svelte";
 
 	export let websiteResponse : Website;
 	export let categoriesResponse: Array<Category>;
 	export let subcategoriesResponse: Array<Subcategory>;
 	export let itemsResponse : Array<Item>;
+	const googleAnalyticsId : string = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
 	website.set(websiteResponse)
 	categories.set(categoriesResponse.sort(sortDescending).filter(element => itemsResponse.some(obj => obj.categoryId === element.id)))
 	subcategories.set(subcategoriesResponse.sort(sortDescending).filter(subcategory => itemsResponse.some(obj => obj.subcategoryId === subcategory.id)))
@@ -35,8 +37,11 @@
 	<title>{$website.title} - Online Menu</title>
 	<link rel='icon' href={"https:"+$website.logoImageUrl+"?w=16&h=16&fm=webp"} />
 	<meta name="description" content={$website.description}>
-
 </svelte:head>
+
+{#if googleAnalyticsId}
+	<GoogleAnalytics properties={[ googleAnalyticsId ]} />
+{/if}
 
 <Header />
 <Navigation />
