@@ -6,7 +6,7 @@
 		askLocationButtonVisible,
 		itemDialogCategory,
 		itemDialogItem,
-		itemDialogVisible, itemDialogVisible2
+		itemDialogVisible
 	} from '../stores.js';
 	import { getLocation } from '../util/geolocation.js';
 
@@ -16,8 +16,7 @@
 	function openItemInfo(){
 		itemDialogItem.set(item)
 		itemDialogCategory.set(category)
-		itemDialogVisible2.set(true)
-		// itemDialogVisible.set(true)
+		itemDialogVisible.set(true)
 	}
 
 </script>

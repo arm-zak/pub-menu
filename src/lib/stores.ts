@@ -3,10 +3,7 @@ import type { coordinate, Website } from './interfaces/Website';
 import type { Category } from './interfaces/Category';
 import type { Item } from './interfaces/Item';
 import type { Subcategory } from './interfaces/Subcategory';
-// export let website: any;
-// export let categories;
-// export let subcategories;
-// export let items;
+
 export const website = writable<Website>({});
 export const categories = writable<Array<Category>>([]);
 export const subcategories = writable<Array<Subcategory>>([]);
@@ -17,6 +14,5 @@ export const coordinates = writable<Array<coordinate>>([]);
 export const askLocationButtonVisible = writable(false);
 export const alcoholPricesVisible = writable(false);
 export const itemDialogVisible = writable(false);
-export const itemDialogVisible2 = writable(false);
-export const itemDialogItem = writable<Item>({})
-export const itemDialogCategory = writable<Category>({shownAttributes:[]})
+export const itemDialogItem = writable<Item>({});
+export const itemDialogCategory = writable<Category>({ shownAttributes: [] });
