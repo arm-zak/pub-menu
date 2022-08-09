@@ -2,6 +2,8 @@
 
 Online menu mainly for pubs and restaurants. Designed to show detailed descriptions of all menu items. Uses Contentful for data.
 
+[Live demo](https://svantes.uplandsnation.se)
+
 ## Developing
 
 ```bash
