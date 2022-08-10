@@ -1,5 +1,5 @@
 import type { coordinate } from '../interfaces/Website';
-import {alcoholPricesVisible, askLocationButtonVisible, coordinates, website} from '../stores';
+import { alcoholPricesVisible, askLocationButtonVisible, coordinates, website } from '../stores';
 import { get } from 'svelte/store';
 
 export function showLocation(position: GeolocationPosition) {
@@ -14,6 +14,7 @@ export function showLocation(position: GeolocationPosition) {
 	}
 	askLocationButtonVisible.set(false);
 }
+
 function showLocationAuto(position: GeolocationPosition) {
 	const location: coordinate = {
 		lat: position.coords.latitude,
@@ -36,10 +37,14 @@ export function errorHandler(error: GeolocationPositionError) {
 }
 
 export function isUserInside(currentLocation: coordinate): boolean {
-	const vs : Array<coordinate> = [];
-	const defaultCoord : coordinate = {lat: 0, lon: 0}
-	vs.push(get(website).locationBoundary1 || defaultCoord, get(website).locationBoundary2 || defaultCoord,
-		get(website).locationBoundary3 || defaultCoord, get(website).locationBoundary4 || defaultCoord)
+	const vs: Array<coordinate> = [];
+	const defaultCoord: coordinate = { lat: 0, lon: 0 };
+	vs.push(
+		get(website).locationBoundary1 || defaultCoord,
+		get(website).locationBoundary2 || defaultCoord,
+		get(website).locationBoundary3 || defaultCoord,
+		get(website).locationBoundary4 || defaultCoord
+	);
 	const x = currentLocation.lon,
 		y = currentLocation.lat;
 
@@ -69,9 +74,7 @@ export function checkGeolocationPermissions() {
 				askLocationButtonVisible.set(true);
 			}
 		});
-	}
-	else {
+	} else {
 		askLocationButtonVisible.set(true);
 	}
-
 }
