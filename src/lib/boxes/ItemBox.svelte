@@ -114,7 +114,7 @@
 					     aria-label="Untappd"
 						 href={item.untappdUrl}>
 					</a>
-					<p class='pt-0.5'>{item.untappdRating?.toFixed(1)}</p>
+					<p class='pt-0.5'>{item.untappdRating ? item.untappdRating.toFixed(1) : "N/A"}</p>
 				{/if}
 			</div>
 			<button aria-label="info" class='flex flex-row items-center justify-center bg-black rounded-full w-6 h-6 shadow text-white' on:click={openItemInfo}>
