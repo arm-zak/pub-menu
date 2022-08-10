@@ -51,7 +51,7 @@
 
 
 </script>
-<!--style="background-color: {colord(website.color2).lighten(0.45).toRgbString()}"-->
+
 <div class="py-2 bg-white shadow-lg"
      id={"category-"+category.id} use:inview={inViewOptions} on:change={onViewChange}>
   <div>
@@ -77,4 +77,3 @@
 
 
 </div>
-<!--class="px-1 py-2 my-2 border border-slate-500 rounded"-->

@@ -49,7 +49,6 @@
 <Navigation />
 <List />
 <Footer />
-<!--<ItemInfo />-->
 {#if $itemDialogVisible}
 	<ItemInfo on:close="{() => {itemDialogVisible.set(false)}}">
 	</ItemInfo>

@@ -42,7 +42,6 @@
 	<div class='w-full flex flex-row-reverse sticky top-0 pt-3 pb-1 z-10 bg-white'>
 		<button aria-label='close' class='ml-auto w-8 h-8 flex items-center justify-center' on:click={close}>
 			<i class='fa-solid fa-xmark text-[20px] '></i>
-			<!--				<i class='fa fa-info-circle text-[20px]'></i>-->
 		</button>
 	</div>
 	<div class='flex flex-col my-1 gap-y-1 items-center'>

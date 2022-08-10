@@ -21,7 +21,6 @@
 	on:click={() => scrollIntoView()}
 >{category.title}
 </button>
-<!--on:click={() => scrollIntoView("category-"+category.id)}-->
 
 <style>
     .active-tab {

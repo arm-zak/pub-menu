@@ -20,10 +20,9 @@
 	}
 
 </script>
-<!--			 style='background-image:-->
-<!--		 radial-gradient({colord(website.color2).toRgbString()},{colord(website.color2).lighten(0.3).toRgbString()}) -->
+
 <div class='relative w-full lg:w-1/2 2xl:w-1/3'>
-<!--	mx-auto left-0 right-0 text-center-->
+
 	{#if !item.inStock}
 		<h3 class='text-red-600 mx-auto left-0 right-0 text-center top-10 absolute text-3xl font-bold'>SOLD OUT</h3>
 	{/if}
@@ -118,7 +117,6 @@
 			</div>
 			<button aria-label="info" class='flex flex-row items-center justify-center bg-black rounded-full w-6 h-6 shadow text-white' on:click={openItemInfo}>
 				<i class="fa-solid fa-info text-[13px]"></i>
-<!--				<i class='fa fa-info-circle text-[20px]'></i>-->
 			</button>
 		</div>
 	</div>
