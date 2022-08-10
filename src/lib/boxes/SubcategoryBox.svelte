@@ -1,7 +1,8 @@
 <script lang="ts">
   import {inview} from 'svelte-inview';
-  import { activeCategory, activeSubcategory, subcategories } from '../stores.js';
+  import { subcategories } from '../stores.js';
   import type { Subcategory } from '../interfaces/Subcategory';
+  import {updateActiveSubcategory} from "../util/navigation";
   export let subcategory : Subcategory;
   const inViewOptions = {
     rootMargin: '-96px 0px 0px 0px'
@@ -19,19 +20,6 @@
     subcategories.set(updatedSubcategories)
   }
 
-  function updateActiveSubcategory(){
-    const updatedActiveSubcategory = $subcategories.filter(subcategory =>
-      subcategory.categoryId === $activeCategory
-    ).find(element => element.inView) ?
-      $subcategories.filter(subcategory =>
-        subcategory.categoryId === $activeCategory
-      ).find(element => element.inView).id : ''
-    activeSubcategory.set(updatedActiveSubcategory)
-    const element: HTMLElement = document.getElementById('nav-subcategory-' + updatedActiveSubcategory);
-    if (element) {
-      element.scrollIntoView({block: "nearest"})
-    }
-  }
 
 </script>
 

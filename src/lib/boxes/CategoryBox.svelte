@@ -1,11 +1,12 @@
 <script lang="ts">
   import { colord } from "colord";
   import {inview} from 'svelte-inview';
-  import { activeCategory, activeSubcategory, categories, subcategories } from '../stores';
+  import {  categories, subcategories } from '../stores';
 
   import type { Category } from '../interfaces/Category';
   import type { Website } from '../interfaces/Website';
   import {items} from "../stores.js";
+  import {updateActiveCategory, updateActiveSubcategory} from "../util/navigation";
   export let website : Website;
   export let category : Category;
   const inViewOptions = {
@@ -23,30 +24,6 @@
       $categories.map(obj => obj.id === category.id ?
         {...obj, inView} : obj);
     categories.set(updatedCategories)
-  }
-
-  function updateActiveCategory(){
-    const updatedActiveCategory = $categories.find(element => element.inView) ?
-      $categories.find(element => element.inView).id : ''
-    activeCategory.set(updatedActiveCategory)
-    const element: HTMLElement = document.getElementById('nav-category-' + updatedActiveCategory);
-    if (element) {
-      element.scrollIntoView({block: "nearest"})
-    }
-  }
-
-  function updateActiveSubcategory(){
-    const updatedActiveSubcategory = $subcategories.filter(subcategory =>
-      subcategory.categoryId === $activeCategory
-    ).find(element => element.inView) ?
-      $subcategories.filter(subcategory =>
-        subcategory.categoryId === $activeCategory
-      ).find(element => element.inView).id : ''
-    activeSubcategory.set(updatedActiveSubcategory)
-    const element: HTMLElement = document.getElementById('nav-subcategory-' + updatedActiveSubcategory);
-    if (element) {
-      element.scrollIntoView({block: "nearest"})
-    }
   }
 
 
