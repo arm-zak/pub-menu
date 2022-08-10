@@ -82,8 +82,9 @@
 				</div>
 			{/if}
 			{#if category.shownAttributes.includes("Gluten free tags") && item.glutenFree === "Yes"}
-				<div class='group flex flex-row items-center justify-center bg-amber-300 rounded-full w-6 hover:px-2 hover:w-max h-6 shadow text-black'>
-					<i class=" line-through decoration-2 fa-solid fa-wheat-awn text-[13px]"></i>
+				<div class='relative group flex flex-row items-center justify-center bg-amber-300 rounded-full w-6 hover:px-2 hover:w-max h-6 shadow text-black'>
+					<i class=" fa-solid fa-slash text-[14px] absolute z-10 m-1 group-hover:m-1.5 left-0"></i>
+					<i class=" fa-solid fa-wheat-awn text-[13px]"></i>
 					<p class='pl-1 text-xs hidden group-hover:block'>Gluten free</p>
 				</div>
 			{/if}
@@ -100,7 +101,8 @@
 				</div>
 			{/if}
 			{#if category.shownAttributes.includes("Gluten free tags") && item.glutenFree === "Optional"}
-				<div class='group flex flex-row items-center justify-center bg-amber-300/25 rounded-full w-6 hover:px-2 hover:w-max h-6 shadow text-black'>
+				<div class='relative group flex flex-row items-center justify-center bg-amber-300/25 rounded-full w-6 hover:px-2 hover:w-max h-6 shadow text-black'>
+					<i class=" fa-solid fa-slash text-[14px] absolute z-10 ml-1 group-hover:ml-1 left-0"></i>
 					<i class=" line-through decoration-2 fa-solid fa-wheat-awn text-[13px]"></i>
 					<p class='pl-1 text-xs hidden group-hover:block'>Gluten free option available</p>
 				</div>
@@ -112,7 +114,7 @@
 					     aria-label="Untappd"
 						 href={item.untappdUrl}>
 					</a>
-					<p class='pt-0.5'>{item.untappdRating ? item.untappdRating.toFixed(1) : "N/A"}</p>
+					<p class='pt-0.5'>{item.untappdRating?.toFixed(1)}</p>
 				{/if}
 			</div>
 			<button aria-label="info" class='flex flex-row items-center justify-center bg-black rounded-full w-6 h-6 shadow text-white' on:click={openItemInfo}>

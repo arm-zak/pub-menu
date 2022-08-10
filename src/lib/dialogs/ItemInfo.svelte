@@ -68,7 +68,8 @@
 			</div>
 		{/if}
 		{#if $itemDialogCategory.shownAttributes.includes("Gluten free tags") && $itemDialogItem.glutenFree === "Yes"}
-			<div class=' flex flex-row items-center justify-center bg-amber-300 rounded-full px-2 h-6 shadow text-black'>
+			<div class='relative flex flex-row items-center justify-center bg-amber-300 rounded-full px-2 h-6 shadow text-black'>
+				<i class=" fa-solid fa-slash text-[14px] absolute z-10 ml-1.5 left-0"></i>
 				<i class=' line-through decoration-2 fa-solid fa-wheat-awn text-[13px]'></i>
 				<p class='pl-1 text-xs'>Gluten free</p>
 			</div>
@@ -86,7 +87,8 @@
 			</div>
 		{/if}
 		{#if $itemDialogCategory.shownAttributes.includes("Gluten free tags") && $itemDialogItem.glutenFree === "Optional"}
-			<div class='flex flex-row items-center justify-center bg-amber-300/25 rounded-full px-2 h-6 shadow text-black'>
+			<div class='relative flex flex-row items-center justify-center bg-amber-300/25 rounded-full px-2 h-6 shadow text-black'>
+				<i class=" fa-solid fa-slash text-[14px] absolute z-10 ml-1.5 left-0"></i>
 				<i class=' line-through decoration-2 fa-solid fa-wheat-awn text-[13px]'></i>
 				<p class='pl-1 text-xs'>Gluten free option available</p>
 			</div>
