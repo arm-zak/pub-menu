@@ -49,7 +49,7 @@
 			</div>
 			{#if item.imageUrl}
 				<div class='ml-1 w-20 flex items-center justify-center shrink-0'>
-					<img class='max-h-full' src={"https:"+item.imageUrl + '?w=80&fm=webp'} alt='Item'>
+					<img class='max-h-full' src={"https:"+item.imageUrl + '?w=80&h=80&fm=webp'} alt='Item'>
 				</div>
 			{/if}
 		</div>

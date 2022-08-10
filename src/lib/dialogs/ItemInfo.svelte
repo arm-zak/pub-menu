@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { createEventDispatcher, onDestroy } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { alcoholPricesVisible, askLocationButtonVisible, itemDialogCategory, itemDialogItem } from '../stores.js';
 	import { getCountry } from '../util/regionNames.js';
 	import {errorHandler, showLocation} from '../util/geolocation.js';
