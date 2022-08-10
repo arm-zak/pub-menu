@@ -1,22 +1,13 @@
 import type { coordinate } from '../interfaces/Website';
-import { alcoholPricesVisible, askLocationButtonVisible, coordinates } from '../stores';
+import {alcoholPricesVisible, askLocationButtonVisible, coordinates, website} from '../stores';
 import { get } from 'svelte/store';
 
-export function getLocation(): void {
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showLocation, errorHandler);
-	} else {
-		alert('Error: Geolocation is not supported by this browser. Unable to fetch prices.');
-		askLocationButtonVisible.set(false);
-	}
-}
-
-function showLocation(position: GeolocationPosition) {
+export function showLocation(position: GeolocationPosition) {
 	const location: coordinate = {
 		lat: position.coords.latitude,
 		lon: position.coords.longitude
 	};
-	if (isUserInside(location, get(coordinates))) {
+	if (isUserInside(location)) {
 		alcoholPricesVisible.set(true);
 	} else {
 		alert('You are not within the boundary of the location. Unable to fetch prices.');
@@ -28,13 +19,13 @@ function showLocationAuto(position: GeolocationPosition) {
 		lat: position.coords.latitude,
 		lon: position.coords.longitude
 	};
-	if (isUserInside(location, get(coordinates))) {
+	if (isUserInside(location)) {
 		alcoholPricesVisible.set(true);
 	}
 	askLocationButtonVisible.set(false);
 }
 
-function errorHandler(error: GeolocationPositionError) {
+export function errorHandler(error: GeolocationPositionError) {
 	if (error.code == 1) {
 		alert('Error: Access to position is denied! Unable to fetch prices.');
 	} else if (error.code == 2) {
@@ -44,7 +35,11 @@ function errorHandler(error: GeolocationPositionError) {
 	}
 }
 
-export function isUserInside(currentLocation: coordinate, vs: Array<coordinate>): boolean {
+export function isUserInside(currentLocation: coordinate): boolean {
+	const vs : Array<coordinate> = [];
+	const defaultCoord : coordinate = {lat: 0, lon: 0}
+	vs.push(get(website).locationBoundary1 || defaultCoord, get(website).locationBoundary2 || defaultCoord,
+		get(website).locationBoundary3 || defaultCoord, get(website).locationBoundary4 || defaultCoord)
 	const x = currentLocation.lon,
 		y = currentLocation.lat;
 
@@ -63,14 +58,20 @@ export function isUserInside(currentLocation: coordinate, vs: Array<coordinate>)
 }
 
 export function checkGeolocationPermissions() {
-	navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
-		if (result.state === 'granted') {
-			askLocationButtonVisible.set(false);
-			navigator.geolocation.getCurrentPosition(showLocationAuto, errorHandler);
-		} else if (result.state === 'denied') {
-			askLocationButtonVisible.set(false);
-		} else if (result.state === 'prompt') {
-			askLocationButtonVisible.set(true);
-		}
-	});
+	if (navigator.permissions) {
+		navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+			if (result.state === 'granted') {
+				askLocationButtonVisible.set(false);
+				navigator.geolocation.getCurrentPosition(showLocationAuto, errorHandler);
+			} else if (result.state === 'denied') {
+				askLocationButtonVisible.set(false);
+			} else if (result.state === 'prompt') {
+				askLocationButtonVisible.set(true);
+			}
+		});
+	}
+	else {
+		askLocationButtonVisible.set(true);
+	}
+
 }

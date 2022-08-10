@@ -2,7 +2,7 @@
 	import { createEventDispatcher, onDestroy } from 'svelte';
 	import { alcoholPricesVisible, askLocationButtonVisible, itemDialogCategory, itemDialogItem } from '../stores.js';
 	import { getCountry } from '../util/regionNames.js';
-	import { getLocation } from '../util/geolocation.js';
+	import {errorHandler, showLocation} from '../util/geolocation.js';
 
 	const dispatch = createEventDispatcher();
 	const close = () => dispatch('close');
@@ -156,7 +156,7 @@
 					<th class='px-2 py-1 align-top '>Price</th>
 					<td class='py-1'>
 						{#if $itemDialogCategory.isAlcohol && $askLocationButtonVisible}
-							<button class='bg-gray-100 p-1 text-xs rounded-lg shadow' on:click={getLocation}>Get prices</button>
+							<button class='bg-gray-100 p-1 text-xs rounded-lg shadow' on:click={() => navigator.geolocation.getCurrentPosition(showLocation, errorHandler)}>Get prices</button>
 						{/if}
 						{#if (!$itemDialogCategory.isAlcohol) ||
 						(!$itemDialogCategory.isAlcohol && $alcoholPricesVisible)}

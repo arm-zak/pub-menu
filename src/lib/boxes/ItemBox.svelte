@@ -8,7 +8,7 @@
 		itemDialogItem,
 		itemDialogVisible
 	} from '../stores.js';
-	import { getLocation } from '../util/geolocation.js';
+	import {errorHandler, showLocation} from '../util/geolocation.js';
 
 	export let category: Category;
 	export let item: Item;
@@ -57,7 +57,7 @@
 		<div class='w-full gap-x-2.5 h-1/4 flex flex-row mt-auto items-center'>
 			<div class='grow '>
 				{#if category.shownAttributes.includes("Prices") && item.price1 && category.isAlcohol && $askLocationButtonVisible}
-					<button class='bg-gray-100 p-1 text-xs rounded-lg shadow' on:click={getLocation}>Get prices</button>
+					<button class='bg-gray-100 p-1 text-xs rounded-lg shadow' on:click={() =>  navigator.geolocation.getCurrentPosition(showLocation, errorHandler)}>Get prices</button>
 				{/if}
 				{#if (category.shownAttributes.includes("Prices") && item.price1 && !category.isAlcohol) ||
 				(category.shownAttributes.includes("Prices") && item.price1 && category.isAlcohol && $alcoholPricesVisible)}

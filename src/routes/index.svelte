@@ -9,7 +9,7 @@
 	import "../tailwind.css";
 	import type { Item } from '../lib/interfaces/Item';
 	import type { Subcategory } from '../lib/interfaces/Subcategory';
-	import type { coordinate, Website } from '../lib/interfaces/Website';
+	import type { Website } from '../lib/interfaces/Website';
 	import type { Category } from '../lib/interfaces/Category';
 	import { checkGeolocationPermissions } from '../lib/util/geolocation';
 	import { sortDescending } from '../lib/util/sortDescending';
@@ -28,9 +28,6 @@
 	subcategories.set(subcategoriesResponse.sort(sortDescending).filter(subcategory => itemsResponse.some(obj => obj.subcategoryId === subcategory.id)))
 	items.set(itemsResponse.sort(sortDescending))
 	onMount(async () => {
-		const locationBoundary : Array<coordinate> = [];
-		locationBoundary.push($website.locationBoundary1, $website.locationBoundary2, $website.locationBoundary3, $website.locationBoundary4)
-		coordinates.set(locationBoundary)
 		checkGeolocationPermissions()
 	});
 
