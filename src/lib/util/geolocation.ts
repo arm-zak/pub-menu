@@ -1,5 +1,5 @@
 import type { coordinate } from '../interfaces/Website';
-import { alcoholPricesVisible, askLocationButtonVisible, coordinates, website } from '../stores';
+import { alcoholPricesVisible, askLocationButtonVisible, website } from '../stores';
 import { get } from 'svelte/store';
 
 export function showLocation(position: GeolocationPosition) {

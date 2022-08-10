@@ -4,7 +4,7 @@
 	import Navigation from '../lib/Navigation.svelte';
 	import List from '../lib/List.svelte';
 	import Footer from '../lib/Footer.svelte';
-	import { categories, coordinates, items, subcategories, website } from '../lib/stores';
+	import { categories, items, subcategories, website } from '../lib/stores';
 	import '../tailwind.css';
 	import type { Item } from '../lib/interfaces/Item';
 	import type { Subcategory } from '../lib/interfaces/Subcategory';
