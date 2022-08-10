@@ -43,7 +43,7 @@
       <p class="my-2 text-sm mx-2 whitespace-pre-line">{subcategory.description}</p>
     {/if}
   </div>
-  <div class="flex flex-wrap border-y-2 divide-y-2 lg:border-b-0 lg:divide-y-0 divide-slate-200">
+  <div class="flex flex-wrap border-y-2 divide-y-2 lg:border-y-0 lg:divide-y-0 divide-slate-200">
   <slot name="subcategory-items"></slot>
   </div>
 </div>
