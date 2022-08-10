@@ -34,7 +34,7 @@
   }
 
 </script>
-<!--style="background-color: {colord(website.color2).lighten(0.3).toRgbString()}"-->
+
 <div class="py-2 my-2"
      id={"subcategory-"+subcategory.id} use:inview={inViewOptions} on:change={onViewChange}>
   <div class="w-full">

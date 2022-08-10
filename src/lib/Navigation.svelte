@@ -2,7 +2,7 @@
     import {colord} from "colord";
     import CategoryButton from './nav-buttons/CategoryButton.svelte';
     import SubcategoryButton from './nav-buttons/SubcategoryButton.svelte';
-    import { activeCategory, categories, items, subcategories, website } from './stores.js';
+    import {activeCategory, categories, items, subcategories, website} from './stores.js';
 
 </script>
 
@@ -23,7 +23,7 @@
 
 <style>
 
-    nav::-webkit-scrollbar  {
+    nav::-webkit-scrollbar {
         display: none;
     }
 
