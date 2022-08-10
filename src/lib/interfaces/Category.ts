@@ -17,7 +17,9 @@ export function mapContentfulCategory(contentfulObject: any): Category {
 		orderImportance: contentfulObject.fields.orderImportance,
 		priceLabel: contentfulObject.fields.priceLabel,
 		isAlcohol: contentfulObject.fields.isAlcohol,
-		shownAttributes: contentfulObject.fields.shownAttributes ? contentfulObject.fields.shownAttributes : [],
+		shownAttributes: contentfulObject.fields.shownAttributes
+			? contentfulObject.fields.shownAttributes
+			: [],
 		inView: false
 	};
 }
